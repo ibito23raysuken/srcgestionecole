@@ -1,0 +1,41 @@
+php artisan db:seed --class=UserSeeder
+
+Classe Préparatoire (CP) :
+Lecture
+Écriture
+Mathématiques de base
+Sciences naturelles
+Éducation civique et morale
+Éducation artistique
+
+Cours Élémentaire 1ère année (CE1) :
+Renforcement de la lecture et de l'écriture
+Mathématiques
+Sciences naturelles
+Éducation civique et morale
+Éducation artistique
+
+Cours Élémentaire 2ème année (CE2) :
+Lecture et compréhension de textes plus complexes
+Écriture
+Mathématiques
+Sciences naturelles
+Éducation civique et morale
+Éducation artistique
+
+Cours Moyen 1ère année (CM1) :
+Consolidation des compétences en lecture et écriture
+Mathématiques
+Sciences naturelles
+Histoire et géographie
+Éducation civique et morale
+Éducation artistique
+
+Cours Moyen 2ème année (CM2) :
+Lecture et compréhension de textes variés
+Écriture
+Mathématiques
+Sciences naturelles
+Histoire et géographie
+Éducation civique et morale
+Éducation artistique

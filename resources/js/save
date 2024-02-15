@@ -1,0 +1,219 @@
+import "./bootstrap";
+import ReactDOM from "react-dom";
+import React from "react";
+import Datepickers from "./components/eleve/datepicker/datepicker";
+import CheckBox from "./components/eleve/checkbox/checkbox";
+import Tableau from "./components/eleve/table/table";
+import Alerts from "./components/alert/alert";
+import FormulaireHidden from "./components/eleve/formularhidden/formularhidden";
+import TableauEnseignant from "./components/enseignant/table/table";
+import CardProfiles from "./components/eleve/cardprofile/cardprofile";
+import TableauClasse from "./components/classe/table/table";
+import Drawer from "./components/drawer/drawers";
+import Parametre from "./components/parametre/formulaire";
+import ListeMois from "./components/eleve/ecolage/ListeMois";
+import ProfileEnseignant from "./components/enseignant/profile/profile";
+import InputPhoneNumber from "./components/enseignant/phonenumber/phonenumber";
+import ComponentListeMatiere from "./components/matiere/table/table";
+///////////////////////////////////tetst ///////////////////////////////////////////////////////////
+renderComponent("drawer", Drawer, "data-parametre", "data-connexion");
+renderComponent("datedenaissance", Datepickers, "data-datedenaisance");
+renderComponent("droit", CheckBox, "data-name", "data-chequer");
+renderComponent(
+    "ecolage",
+    CheckBox,
+    "data-name",
+    "data-chequer",
+    "data-allmounthscolaire"
+);
+
+function renderComponent(componentId, component, ...dataAttributes) {
+    const root = document.getElementById(componentId);
+    if (root) {
+        const props = {};
+        dataAttributes.forEach((dataAttribute) => {
+            const data = root.getAttribute(dataAttribute);
+            props[dataAttribute] = JSON.parse(data);
+        });
+        ReactDOM.render(React.createElement(component, props), root);
+    }
+}
+
+///////////////////////////////////////////base////////////////////////////////////////
+/*
+if (rootdrawer) {
+    const dataparametre = rootdrawer.getAttribute("data-parametre");
+    const dataconnexion = rootdrawer.getAttribute("data-connexion");
+    const parametre = JSON.parse(dataparametre);
+    const connexion = JSON.parse(dataconnexion);
+    ReactDOM.render(
+        <Drawer parametre={parametre} connexion={connexion} />,
+        rootdrawer
+    );
+} else {
+}
+//////////////////////////////////////eleve/////////////////////////////////////////////////
+const rootDatedenaissance = document.getElementById("datedenaissance");
+if (rootDatedenaissance) {
+    const date = rootDatedenaissance.getAttribute("data-datedenaisance");
+    ReactDOM.render(<Datepickers dateProp={date} />, rootDatedenaissance);
+} else {
+}
+
+const rootDroit = document.getElementById("droit");
+if (rootDroit) {
+    const chequer = rootDroit.getAttribute("data-chequer");
+    ReactDOM.render(
+        <CheckBox name="Droit" defaultChecked={chequer} />,
+        rootDroit
+    );
+} else {
+}
+
+const rootEcolage = document.getElementById("ecolage");
+if (rootEcolage) {
+    const dataallmounthscolaire = rootEcolage.getAttribute(
+        "data-allmounthscolaire"
+    );
+    const allmounthscolaire = JSON.parse(dataallmounthscolaire);
+    ReactDOM.render(
+        <CheckBox name="Ecolage" allmounthscolaire={allmounthscolaire} />,
+        rootEcolage
+    );
+} else {
+}
+*/
+const rootalert = document.getElementById("alerte");
+if (rootalert) {
+    const alertdata = rootalert.getAttribute("data-alerts");
+    const alert = JSON.parse(alertdata);
+    ReactDOM.render(<Alerts alert={alert} />, rootalert);
+} else {
+}
+
+const roottableau = document.getElementById("tableau");
+if (roottableau) {
+    const listemoisData = roottableau.getAttribute("data-listemois");
+    const elevesData = roottableau.getAttribute("data-eleves");
+    const listemois = JSON.parse(listemoisData);
+    const eleves = JSON.parse(elevesData);
+    ReactDOM.render(
+        <Tableau eleves={eleves} listemois={listemois} />,
+        roottableau
+    );
+} else {
+}
+
+const rootformularhidden = document.getElementById("formularhidden");
+if (rootformularhidden) {
+    const Dataeleve = rootformularhidden.getAttribute("data-eleve");
+    const formularhiddenData = rootformularhidden.getAttribute("data-parents");
+    ReactDOM.render(
+        <FormulaireHidden parents={formularhiddenData} eleve={Dataeleve} />,
+        rootformularhidden
+    );
+} else {
+}
+const rootformularhidden2 = document.getElementById("formularhidden2");
+if (rootformularhidden2) {
+    const Dataeleve = rootformularhidden2.getAttribute("data-eleve");
+    const formularhiddenData = rootformularhidden2.getAttribute("data-parents");
+    ReactDOM.render(
+        <FormulaireHidden parents={formularhiddenData} eleve={Dataeleve} />,
+        rootformularhidden2
+    );
+} else {
+}
+const rootformularhidden3 = document.getElementById("formularhidden3");
+if (rootformularhidden3) {
+    const Dataeleve = formularhidden3.getAttribute("data-eleve");
+    const formularhiddenData = formularhidden3.getAttribute("data-parents");
+    ReactDOM.render(
+        <FormulaireHidden parents={formularhiddenData} eleve={Dataeleve} />,
+        rootformularhidden3
+    );
+} else {
+}
+
+const roottableauenseignant = document.getElementById("tableauenseignant");
+if (roottableauenseignant) {
+    const enseignantData =
+        roottableauenseignant.getAttribute("data-enseignant");
+    const enseignant = JSON.parse(enseignantData);
+    ReactDOM.render(
+        <TableauEnseignant enseignants={enseignant} />,
+        roottableauenseignant
+    );
+} else {
+    console.error();
+}
+
+const rootcardprofile = document.getElementById("cardprofile");
+if (rootcardprofile) {
+    const dataeleve = rootcardprofile.getAttribute("data-card");
+    const eleve = JSON.parse(dataeleve);
+    ReactDOM.render(<CardProfiles eleve={eleve} />, rootcardprofile);
+} else {
+}
+
+const roottableauclasse = document.getElementById("tableauclasse");
+if (roottableauclasse) {
+    const dataclasse = roottableauclasse.getAttribute("data-classes");
+    const classes = JSON.parse(dataclasse);
+    ReactDOM.render(<TableauClasse classes={classes} />, roottableauclasse);
+} else {
+}
+
+const rootformparams = document.getElementById("rootformparams");
+if (rootformparams) {
+    const dataparametre = rootformparams.getAttribute("data-parametre");
+    const parametre = JSON.parse(dataparametre);
+    ReactDOM.render(<Parametre parametre={parametre} />, rootformparams);
+} else {
+}
+const rootlistemois = document.getElementById("show-ecolage");
+if (rootlistemois) {
+    const dataeleve = rootlistemois.getAttribute("data-eleve");
+    const eleve = JSON.parse(dataeleve);
+    const dataparametre = rootlistemois.getAttribute("data-parametre");
+    const parametre = JSON.parse(dataparametre);
+    ReactDOM.render(
+        <ListeMois eleve={eleve.ecolages} parametre={parametre} />,
+        rootlistemois
+    );
+} else {
+}
+////////////////////////////////////////////Enseignant///////////////////////////////////////////////
+const rootprofileenseignant = document.getElementById("card-profile");
+if (rootprofileenseignant) {
+    const dataenseignant =
+        rootprofileenseignant.getAttribute("data-enseignant");
+    const enseignant = JSON.parse(dataenseignant);
+    ReactDOM.render(
+        <ProfileEnseignant enseignant={enseignant} />,
+        rootprofileenseignant
+    );
+} else {
+}
+
+const rootInputPhoneNumber = document.getElementById("phonenunber");
+if (rootInputPhoneNumber) {
+    const phonenumber = rootInputPhoneNumber.getAttribute("data-phonenumber");
+    ReactDOM.render(
+        <InputPhoneNumber phonenumber={phonenumber} />,
+        rootInputPhoneNumber
+    );
+} else {
+}
+////////////////////////////////////////////Matiere///////////////////////////////////////////////
+const rootlistematiere = document.getElementById("ListeMatiere");
+if (rootlistematiere) {
+    console.log("ici");
+    const ListeMatiere = rootlistematiere.getAttribute("data-matieres");
+    const matiere = JSON.parse(ListeMatiere);
+    ReactDOM.render(
+        <ComponentListeMatiere listematiere={matiere} />,
+        rootlistematiere
+    );
+} else {
+}

@@ -1,0 +1,35 @@
+.red-navbar {
+    background-color: #ff0000; /* Rouge - vous pouvez ajuster la couleur selon vos besoins */
+}
+.gradient-red {
+    background: linear-gradient(to right, #404040, #808080);
+    color: white;
+    padding: 20px;
+}
+.gradient-red2 {
+    background: linear-gradient(to left, #404040, #808080);
+    color: white; /* Texte en noir pour contraster avec le fond gris */
+    padding: 20px;
+    height: 100%;
+}
+.gradient-gray-btn {
+    background: linear-gradient(to right, #404040, #404040);
+    color: white;
+    overflow: hidden;
+}
+.fond {
+    padding: 50px;
+    height: 100%;
+}
+
+.base_main {
+    padding-top: 50px;
+}
+.gradient-red3 {
+    background: linear-gradient(to left, #404040, #808080);
+    color: white;
+    padding: 20px;
+    height: 94.8vh;
+}
+
+/* Ajout de bordures arrondies à la carte */
