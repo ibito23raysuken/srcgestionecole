@@ -13,7 +13,6 @@ export default function Checkboxs(props) {
     let months = [];
     const handleCheckboxChange = (month) => {
         if (selectedMonths.includes(month)) {
-            // Si le mois est déjà sélectionné, le retirer de la liste
             setSelectedMonths(selectedMonths.filter((m) => m !== month));
         } else {
             // Sinon, l'ajouter à la liste
@@ -25,14 +24,12 @@ export default function Checkboxs(props) {
         : "";
     const handleChange = (event) => {
         setChecked(event.target.checked);
-        console.log(`Valeur de ${name} :`, event.target.checked);
     };
-
+    console.log(selectedMonths);
     return (
         <>
             <div>
                 <input type="hidden" name={name} value="false" />
-                {/* Utilisez Checkbox du framework Material-UI */}
                 <Checkbox
                     value={checked}
                     name={name}
@@ -63,6 +60,7 @@ export default function Checkboxs(props) {
                                 className="container "
                                 name="moischequer"
                                 role="group"
+                                value={selectedMonths}
                             >
                                 <div
                                     className="row justify-content-center"

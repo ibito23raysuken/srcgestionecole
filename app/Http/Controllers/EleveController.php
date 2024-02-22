@@ -52,7 +52,7 @@ class EleveController extends Controller
         $eleve=new Eleve();
         $validate=$request->validated();
         $this->eleveManager->build($eleve,$request);
-        $listeMois = explode(",", $request->input('moischequer'));
+        $listeMois=explode(",",str_replace(' ', '', $request->input('moischequer')));
         $ecolage = new Ecolage([
             'mois' => $listeMois,
             'classe_id'=>$request->input('classe'),

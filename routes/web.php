@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 Route::get('/information/{eleve}', [InformationController::class, 'index'])->name('information');
-Route::resource('enseignants/eleves',EleveAuthEnseignantController::class);
+Route::resource('enseignants/eleves',EleveAuthEnseignantController::class)->middleware('enseignant');;
 
 Route::resource('eleves',EleveController::class)->middleware('admin');
 Route::resource('enseignants',EnseignantController::class)->middleware('admin');

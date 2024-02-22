@@ -5,7 +5,7 @@ import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { Row, Col, Button } from "react-bootstrap";
 import DeleteIcon from "@mui/icons-material/Delete";
-import AlertDialog from "../modal/AlertDialogueBase";
+import AlertDialog from "../../../components/modal/AlertDialogueBase";
 
 export default function AvanceCard({ nomenseignant, avance, dateavance, id }) {
     const [showButtons, setShowButtons] = useState(false);

@@ -16,8 +16,8 @@ import ProfileEnseignant from "./components/enseignant/profile/profile";
 import InputPhoneNumber from "./components/enseignant/phonenumber/phonenumber";
 import ComponentListeMatiere from "./components/matiere/table/table";
 import CardInformation from "./components/CardInformation/CardInformation";
-import AvanceDemande from "./Page/AvancePage/AvanceDemande";
-import AvanceDemandeListe from "./Page/AvancePage/AvanceDemandeListe";
+import AvanceDemande from "./Page/Admin/AvancePage/AvanceDemande";
+import AvanceDemandeListe from "./Page/Enseignants/AvancePage/AvanceDemandeListe";
 import ListeEtudiants from "./Page/Enseignants/ListeEtudiants/ListeEtudiants";
 import ListeNoteEnseignants from "./Page/Enseignants/ListeNotes/ListeNotes";
 ///////////////////////////////////etudiant  ///////////////////////////////////////////////////////////

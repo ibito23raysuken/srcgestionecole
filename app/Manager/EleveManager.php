@@ -52,7 +52,7 @@ class EleveManager{
     ];
 
         $listemois=Parametre::all();
-        $listeMoisParametre = explode(', ', $listemois[count($listemois)-1]->listemois);
+        $listeMoisParametre = explode(',', $listemois[count($listemois)-1]->listemois);
         $mois_actuel = ucfirst(strtolower(date('F')));
         $arrayEnMinuscules = array_map('strtolower', $listeMoisParametre);
         $listeMoisJusquaActuel = array_slice($listeMoisParametre, 0, array_search($correspondanceMois[$mois_actuel], $arrayEnMinuscules) + 1);

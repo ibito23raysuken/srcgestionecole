@@ -64,6 +64,7 @@ function DatatablePage(props) {
             .replace(/[\u0300-\u036f]/g, "")
             .trim();
     };
+    var i = 0;
     const filteredData = eleves.filter((el) => {
         if (filterText === "" && checked.length === 0) {
             return el;
@@ -76,13 +77,10 @@ function DatatablePage(props) {
                 ? "payer" === filterText.toLowerCase()
                 : "non payer" === filterText.toLowerCase();
 
-            let nouvelObjet = el.ecolages[0].mois.map((mois) =>
-                normalizeString(mois)
-            );
             const isMatchingMonths =
                 checked.length === 0 ||
                 checked.some((month) => {
-                    if (nouvelObjet.includes(normalizeString(month))) {
+                    if (el.ecolages[0].mois.includes(month)) {
                     } else {
                         return true;
                     }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import AvanceCard from "../../components/AvanceCard/AvanceCard";
+import AvanceCard from "../AvanceCard/AvanceCard";
 
 export default function AvanceDemande(props) {
     let { "data-listeDemandeAvance": listeDemandeAvance } = props;

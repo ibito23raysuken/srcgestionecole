@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Paginations } from "../../components/pagination/pagination";
-import ItemAvanceDemande from "../../components/ListeAvanceDemande/ItemAvanceDemande";
+import { Paginations } from "../../../components/pagination/pagination";
+import ItemAvanceDemande from "../../../components/ListeAvanceDemande/ItemAvanceDemande";
 
 export default function AvanceDemandeListe(props) {
     let { "data-listeDemandeAvance": listeDemandeAvance } = props;

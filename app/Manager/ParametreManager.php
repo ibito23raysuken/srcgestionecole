@@ -6,8 +6,9 @@ use App\Http\Requests\ParametreRequest;
 
 class ParametreManager{
     public function build(Parametre $parametre,ParametreRequest $request){
+        $listemois=str_replace(' ', '', $request->input('listemois'));
         $parametre->annescolaire=$request->input('annescolaire');
-        $parametre->listemois=$request->input('listemois');
+        $parametre->listemois=$listemois;
         $parametre->save();
     }
 }

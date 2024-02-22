@@ -40,7 +40,7 @@ class ParametreController extends Controller
         $parametre=new Parametre();
         $validate=$parametreRequet->validated();
         $this->parametreManager->build($parametre,$parametreRequet);
-        return redirect()->route('home')->with('success',"La carte étudiant a ete effacer ");
+        return redirect()->route('home')->with('success',"Parametre enregistrer");
     }
 
     /**
