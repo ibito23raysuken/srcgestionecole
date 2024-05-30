@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AlertDialog from "../modal/AlertDialogueBase";
@@ -14,19 +14,19 @@ export default function ItemAvanceDemande({ item }) {
     async function toggleDelete(e) {
         try {
             const response = await axios.delete(`/demandes/destroy/${item.id}`);
-            console.log(response.data);
         } catch (error) {
             console.error(error);
         }
         e.stopPropagation();
         window.location.reload();
     }
+    useEffect(() => {});
     return (
         <>
             <tr>
                 <td>{item.avance}</td>
                 <td>{item.dateavance}</td>
-                <td>Pas de reponse </td>
+                <td>{item.statut} </td>
                 <td>
                     <DeleteIcon
                         fontSize="large"

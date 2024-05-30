@@ -36,6 +36,7 @@ class AvanceDemandeController extends Controller
     }
     public function store(AvanceRequest $avancerequest)
     {
+
         $avance=new AvanceDemande();
         $validate=$avancerequest->validated();
         $this->avanceDemandeManager->build($avance,$avancerequest);
@@ -44,5 +45,12 @@ class AvanceDemandeController extends Controller
     public function destroy(string $id)
     {
         AvanceDemande::findOrFail($id)->delete();
+    }
+    public function update(AvanceRequest $avancerequest,string $id)
+    {
+        $avance = AvanceDemande::findOrFail($id);
+        $validate=$avancerequest->validated();
+        $this->avanceDemandeManager->build($avance,$avancerequest);
+        return response()->json(['message' => $avance], 200);
     }
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('enseignant_id');
             $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('cascade');
             $table->date('dateavance');
+            $table->string('statut');
             $table->integer('avance');
             $table->timestamps();
         });

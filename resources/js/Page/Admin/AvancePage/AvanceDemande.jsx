@@ -4,7 +4,7 @@ import AvanceCard from "../AvanceCard/AvanceCard";
 export default function AvanceDemande(props) {
     let { "data-listeDemandeAvance": listeDemandeAvance } = props;
     return (
-        <div className="container bg-dark mt-5 ">
+        <div className="container mt-5 ">
             {listeDemandeAvance.map((item, id) => (
                 <div
                     className="row justify-content-center"
@@ -12,7 +12,7 @@ export default function AvanceDemande(props) {
                 >
                     <div className="col-md-6 ">
                         <AvanceCard
-                            nomenseignant={item.enseignant.nomenseignant}
+                            nomenseignant={item.enseignant}
                             avance={item.avance}
                             dateavance={item.dateavance}
                             id={item.id}

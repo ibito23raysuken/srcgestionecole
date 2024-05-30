@@ -1,13 +1,35 @@
-.customPageSize {
-    width: 148mm;
-    height: 210mm;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
-    background: linear-gradient(to bottom, #ffffff, #f0f0f0);
-    padding: 10px;
+.redText:hover td {
+    font-size: 1.2em;
+    color: red;
+    font-weight: bolder;
+    cursor: pointer;
 }
-.logo {
-    background-size: cover;
-    width: 300px; /* Largeur souhaitée */
-    height: auto;
+
+.redText:hover::before {
+    content: "Cliquer pour éditer";
+    position: absolute;
+    bottom: calc(80% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.5em; /* Augmentation de la taille de la police */
+    white-space: nowrap;
+}
+.redText:hover::after {
+    content: "";
+    position: absolute;
+    bottom: calc(
+        55% + 5px
+    ); /* Position de la flèche par rapport au conteneur de l'info-bulle */
+    left: 50%; /* Position horizontale centrale */
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+td {
+    vertical-align: middle;
 }

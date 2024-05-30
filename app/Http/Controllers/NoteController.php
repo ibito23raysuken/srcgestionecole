@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Eleve;
 use App\Models\Matiere;
+use App\Models\noteeleve;
 use App\Models\Enseignant;
+use App\Manager\NoteManager;
 use Illuminate\Http\Request;
+use App\Http\Requests\NoteRequest;
 use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
+    private $notetManager;
+
+    public function __construct(NoteManager $notetManager){
+        $this->notetManager = $notetManager;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -18,9 +26,10 @@ class NoteController extends Controller
         $userId = Auth::user()->enseignant_id;
         $enseignant = Enseignant::where('id', $userId)->first();
         $eleve=Eleve::where('id', $id)->first();
+        $classe=Eleve::where('id', $id)->first()->classe;
         $matieres=Matiere::All();
         return view('note.index',[
-            'enseignant'=>$enseignant,'matieres'=>$matieres,'eleve'=>$eleve]);
+            'enseignant'=>$enseignant,'matieres'=>$matieres,'eleve'=>$eleve,'classe'=>$classe]);
     }
 
     /**
@@ -34,9 +43,16 @@ class NoteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(NoteRequest $noterequest)
     {
-        //
+        try {
+            $noteeleve=new noteeleve();
+            $validate=$noterequest->validated();
+            $this->notetManager->build($noteeleve,$noterequest);
+            return response()->json(['message' => $noterequest->all()], 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->any()], 500);
+        }
     }
 
     /**
@@ -58,9 +74,16 @@ class NoteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(NoteRequest $noterequest, string $id)
     {
-        //
+        try {
+            $noteeleve = noteeleve::findOrFail($id);
+            $validate=$noterequest->validated();
+            $this->notetManager->build($noteeleve,$noterequest);
+            return response()->json(['message' => $noterequest->all(),$id], 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->any()], 500);
+        }
     }
 
     /**
@@ -68,6 +91,29 @@ class NoteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            noteeleve::findOrFail($id)->delete();
+            return response()->json(['message' => "bien effacer"], 200);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->any()], 500);
+        }
+
+    }
+    public function showAllNote(string $idexamen,int $ideleve,)
+    {
+        $userEnseignant = Auth::user()->enseignant_id;
+        $noteeleve = noteeleve::with('matiere')->where('exam', $idexamen)->where('eleve_id', $ideleve)->get();
+        return $noteeleve;
+
+    }
+    public function showAllNoteIdexam(string $exam)
+    {
+        $noteeleve = NoteEleve::with('matiere', 'eleve')
+        ->whereHas('eleve', function ($query) {
+            $classe = Enseignant::where('nomEnseignant', Auth::user()->name)->first()->classe->id;
+            $query->where('classe_id', $classe);
+        })->where('exam', $exam)->get();
+
+        return $noteeleve;
     }
 }

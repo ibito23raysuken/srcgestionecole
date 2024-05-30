@@ -39,6 +39,7 @@
                                             Le montant demandé est de :
                                         </div>
                                         <div class="col-4">
+                                            <input type="hidden" name="statut" value="attente">
                                             <input type="hidden" name="enseignant_id" value="{{ $enseignant->id }}">
                                             <input type="hidden" name="dateavance" value="{{ nl2br(date('Y-m-d')) }}">
                                             <input type="text" class="form-control" name="avance" id="avance">

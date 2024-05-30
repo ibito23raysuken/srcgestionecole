@@ -100,10 +100,10 @@ function DatatablePage(props) {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container-fluid">
-            <div className="container ">
+        <div className="m-5">
+            <div>
                 <div className="row">
-                    <div className="col-12 col-md-6 mx-auto">
+                    <div className="col-6 col-mx-4 mx-auto">
                         <div className="search mb-3">
                             <TextField
                                 id="outlined-basic"
@@ -116,102 +116,82 @@ function DatatablePage(props) {
                     </div>
                 </div>
             </div>
-            <div className="container ">
-                <div className="row ">
-                    <div className={"col-12 mx-auto"}>
-                        <div
-                            className="table-responsive"
-                            style={{ width: "90%" }}
-                        >
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" className="col-1">
-                                            ID
-                                        </th>
-                                        <th scope="col" className="col-2">
-                                            Nom
-                                        </th>
-                                        <th scope="col" className="col-1">
-                                            Prenom
-                                        </th>
-                                        <th scope="col" className="col-1">
-                                            Classe
-                                        </th>
-                                        <th scope="col" className="col-1">
-                                            Droit
-                                        </th>
-                                        <th className="col-1">
-                                            <div className="container">
-                                                <div className="d-flex">
-                                                    <Button
-                                                        onClick={
-                                                            handleMenuClick
-                                                        }
-                                                        sx={{
-                                                            color: "black",
-                                                        }}
-                                                    >
-                                                        <MoreVertIcon />
-                                                    </Button>
-                                                    <Button
-                                                        onClick={onclickecolage}
-                                                        sx={{
-                                                            color: "black",
-                                                        }}
-                                                    >
-                                                        Ecolage
-                                                    </Button>
-                                                </div>
-                                                <Menu
-                                                    anchorEl={anchorEl}
-                                                    open={Boolean(anchorEl)}
-                                                    onClose={handleClose}
-                                                    onClick={handleClose}
+            <div>
+                <div className="row">
+                    <div>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Classe</th>
+                                    <th>Droit</th>
+                                    <th>
+                                        <div>
+                                            <div className="d-flex justify-content-end">
+                                                <Button
+                                                    onClick={handleMenuClick}
+                                                    sx={{
+                                                        color: "black",
+                                                    }}
                                                 >
-                                                    <MenuItem
-                                                        onClick={() =>
-                                                            handleMenuItemClick(
-                                                                "triageStatut"
-                                                            )
-                                                        }
-                                                    >
-                                                        {TextTriage}
-                                                    </MenuItem>
-                                                    <MenuItem
-                                                        onClick={() =>
-                                                            handleMenuItemClick(
-                                                                "triageparmois"
-                                                            )
-                                                        }
-                                                    >
-                                                        Trier par mois
-                                                    </MenuItem>
-                                                </Menu>
+                                                    <MoreVertIcon />
+                                                </Button>
+                                                <Button
+                                                    onClick={onclickecolage}
+                                                    sx={{
+                                                        color: "black",
+                                                    }}
+                                                >
+                                                    Ecolage
+                                                </Button>
                                             </div>
-                                        </th>
-                                        <th scope="col" className="col-5">
-                                            <Button
-                                                sx={{
-                                                    color: "black",
-                                                    fontWeight: "bolder",
-                                                }}
+                                            <Menu
+                                                anchorEl={anchorEl}
+                                                open={Boolean(anchorEl)}
+                                                onClose={handleClose}
+                                                onClick={handleClose}
                                             >
-                                                Actions
-                                            </Button>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {currentItems.map((item, id) => (
-                                        <ListItem
-                                            key={item.nom + id}
-                                            item={item}
-                                        />
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                                                <MenuItem
+                                                    onClick={() =>
+                                                        handleMenuItemClick(
+                                                            "triageStatut"
+                                                        )
+                                                    }
+                                                >
+                                                    {TextTriage}
+                                                </MenuItem>
+                                                <MenuItem
+                                                    onClick={() =>
+                                                        handleMenuItemClick(
+                                                            "triageparmois"
+                                                        )
+                                                    }
+                                                >
+                                                    Trier par mois
+                                                </MenuItem>
+                                            </Menu>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <Button
+                                            sx={{
+                                                color: "black",
+                                                fontWeight: "bolder",
+                                            }}
+                                        >
+                                            Actions
+                                        </Button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {currentItems.map((item, id) => (
+                                    <ListItem key={item.nom + id} item={item} />
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -242,9 +222,7 @@ function DatatablePage(props) {
                 <Drawer
                     PaperProps={{
                         sx: {
-                            width: 150,
-                            height: "calc(100% - 400px)",
-                            top: 100,
+                            paddingTop: 20,
                             backgroundColor: "whitesmoke",
                             boxShadow: "4px 0px 10px rgba(0, 0, 0, 0.9)",
                             borderRadius: "20px 0px 0px 20px",
@@ -255,7 +233,9 @@ function DatatablePage(props) {
                     variant="persistent"
                 >
                     <CardContent>
-                        SELECTIONNER MOIS
+                        <div>
+                            <strong>SELECTIONNER MOIS</strong>
+                        </div>
                         <FormGroup>
                             {parametrelistemois.map((month) => (
                                 <FormControlLabel

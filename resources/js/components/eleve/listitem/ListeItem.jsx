@@ -2,9 +2,13 @@ import { Button } from "@mui/material";
 import { Folder2, PencilSquare, Trash } from "react-bootstrap-icons";
 import React, { useState } from "react";
 import AlertDialog from "../../modal/alertDialogs";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 export function ListItem({ item }) {
     const [isDialogOpen, setDialogOpen] = useState(false);
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
     const handleDelete = () => {
         setDialogOpen(true);
@@ -22,7 +26,7 @@ export function ListItem({ item }) {
     return (
         <>
             <tr>
-                <th scope="row">{item.ref_eleve}</th>
+                <th>{item.ref_eleve}</th>
                 <td>{item.nom}</td>
                 <td>{item.prenom}</td>
                 <td>{item.classe.nomclasse}</td>
@@ -37,7 +41,8 @@ export function ListItem({ item }) {
                             color="success"
                             href={`/eleves/${item.id}`}
                         >
-                            <Folder2 /> Show
+                            <Folder2 />
+                            {isSmallScreen ? "" : "Show"}
                         </Button>
                     </div>
                     <div className="mx-2 mb-2">
@@ -47,7 +52,8 @@ export function ListItem({ item }) {
                             color="primary"
                             href={`/eleves/${item.id}/edit`}
                         >
-                            <PencilSquare /> Modifier
+                            <PencilSquare />
+                            {isSmallScreen ? "" : "Modifier"}
                         </Button>
                     </div>
                     <div className="mx-2 mb-2">
@@ -56,7 +62,8 @@ export function ListItem({ item }) {
                             color="error"
                             onClick={handleDelete}
                         >
-                            <Trash /> Supprimer
+                            <Trash />
+                            {isSmallScreen ? "" : "Supprimer"}
                         </Button>
                     </div>
                 </td>

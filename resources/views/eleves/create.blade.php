@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('content')
-<div class="gradient-red pt-4">
+<div class="gradient-red">
     <div class="text-center ">
         <h2><strong>INSCRIPTION DE L'ÉLÈVE</strong></h2>
 
@@ -39,8 +39,8 @@
                     <label for="sexe" class="form-label">Sexe:</label>
                     <select class="form-select" name="sexe" id="sexe">
                         <option value="" selected>Selectioner le sexe</option>
-                        <option value="Homme">Homme</option>
-                        <option value="Femme">Femme</option>
+                        <option value="M">Homme</option>
+                        <option value="F">Femme</option>
                       </select>
                       @error('sexe')
                       <span role="alert" class="text-danger">

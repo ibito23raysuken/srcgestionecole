@@ -43,6 +43,28 @@
                 @enderror
             </div>
             <div class="col-md-12">
+                <label for="classeenseignant" class="form-label">Situation Familiale</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="situationfamiliale" id="situationfamiliale">
+                </div>
+                @error('situationfamiliale')
+                    <span role="alert" class="text-danger">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-md-12">
+                <label for="classeenseignant" class="form-label">Numero CIN</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="cin" id="cin">
+                </div>
+                @error('cin')
+                    <span role="alert" class="text-danger">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-md-12">
                 <div class="mb-3">
                     <label for="classeenseignant" class="form-label">Veuillez sélectionner un classe.</label>
                     <select name="classeenseignant" class="form-select" aria-label="Default select example">
@@ -53,6 +75,17 @@
                       </select>
                 </div>
                 @error('classeenseignant')
+                    <span role="alert" class="text-danger">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="col-md-12">
+                <label for="classeenseignant" class="form-label">Date d'embauche</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="dateembauche" id="dateembauche">
+                </div>
+                @error('dateembauche')
                     <span role="alert" class="text-danger">
                         <strong>{{ $message }}</strong>
                     </span>

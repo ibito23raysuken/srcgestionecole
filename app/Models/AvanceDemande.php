@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AvanceDemande extends Model
 {
     protected $fillable = [
-        'avance',
+        'avance','statut'
     ];
     use HasFactory;
     public function enseignant() {

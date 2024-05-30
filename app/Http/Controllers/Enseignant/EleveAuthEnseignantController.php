@@ -15,7 +15,8 @@ class EleveAuthEnseignantController extends Controller
      */
     public function index()
     {
-        $eleves=Eleve::All();
+        $classe = Enseignant::where('nomEnseignant', Auth::user()->name)->first()->classe->id;
+        $eleves=Eleve::where('classe_id', $classe)->get();
         return view('authEnseignant.listeEleve',[
             'eleves'=>$eleves]);
     }

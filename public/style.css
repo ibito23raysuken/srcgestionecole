@@ -24,6 +24,7 @@
 
 .base_main {
     padding-top: 50px;
+    padding-left: 55px;
 }
 .gradient-red3 {
     background: linear-gradient(to left, #404040, #808080);

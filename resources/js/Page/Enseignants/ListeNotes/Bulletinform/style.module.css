@@ -1,0 +1,6 @@
+.redText:hover td {
+    font-size: 1.2em;
+    color: red;
+    font-weight: bolder;
+    cursor: pointer;
+}

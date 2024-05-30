@@ -22,23 +22,45 @@ export default function AvanceCard({ nomenseignant, avance, dateavance, id }) {
     const toggleButtons = () => {
         setShowButtons(!showButtons);
     };
-    const toggleButtonsAccept = () => {
-        console.log("accepter");
-    };
-    const toggleButtonsDecline = () => {
-        console.log("decline");
-    };
-    async function toggleDelete(e) {
-        console.log(e);
+    async function toggleButtonsAccept(id) {
+        const noteData = {
+            enseignant_id: nomenseignant.id,
+            dateavance: dateavance,
+            statut: "accepter",
+            avance: avance,
+        };
         try {
-            const response = await axios.delete(`/demandes/destroy/${id}`);
+            const response = await axios.put(`/demandes/${id}`, noteData);
             console.log(response.data);
         } catch (error) {
             console.error(error);
         }
         window.location.reload();
     }
-
+    async function toggleButtonsDecline(id) {
+        const noteData = {
+            enseignant_id: nomenseignant.id,
+            dateavance: dateavance,
+            statut: "decline",
+            avance: avance,
+        };
+        try {
+            const response = await axios.put(`/demandes/${id}`, noteData);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+        window.location.reload();
+        console.log("decline");
+    }
+    async function toggleDelete(e) {
+        try {
+            const response = await axios.delete(`/demandes/destroy/${id}`);
+        } catch (error) {
+            console.error(error);
+        }
+        window.location.reload();
+    }
     return (
         <Card
             variant="outlined"
@@ -70,7 +92,7 @@ export default function AvanceCard({ nomenseignant, avance, dateavance, id }) {
                         <Col md={10}>
                             <CardContent>
                                 <Typography variant="h5" id="card-description">
-                                    {nomenseignant}
+                                    {nomenseignant.nomenseignant}
                                 </Typography>
                                 <Typography
                                     variant="body1"
@@ -86,14 +108,14 @@ export default function AvanceCard({ nomenseignant, avance, dateavance, id }) {
                                     <Button
                                         variant="success"
                                         className="me-2 m-1"
-                                        onClick={toggleButtonsAccept}
+                                        onClick={() => toggleButtonsAccept(id)}
                                     >
                                         Accepter
                                     </Button>
                                     <Button
                                         variant="danger"
                                         className="m-1"
-                                        onClick={toggleButtonsDecline}
+                                        onClick={() => toggleButtonsDecline(id)}
                                     >
                                         Décliner
                                     </Button>
